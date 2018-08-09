@@ -177,6 +177,7 @@ public class ApktoolMainAj {
             decodeOption.setIgnoreResDecodeError(true);
         }
 
+//        if (CommandLineArgEnum.XML_ATTRIBUTE_NAME_CORRECT.hasMatch(cli)) {
         if (CommandLineArgEnum.XML_ATTRIBUTE_NAME_CORRECT.hasMatch(cli)) {
             decodeOption.setXmlAttributeNameCorrect(true);
         }

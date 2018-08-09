@@ -128,7 +128,8 @@ public class AXmlResourceParserAj {
             }
 
             if (newName.trim().length() > 0 && !value.equals(newName) && !newName.equals("name")) {
-                if (ShakaDecodeOption.getInstance().isXmlAttributeNameCorrect()) {
+//                if (ShakaDecodeOption.getInstance().isXmlAttributeNameCorrect()) {
+                if (true) {
                     LogHelper.warning("Xml attribute name correct : " + value + " to " + newName);
                     int resId = parser.getAttributeNameResource(index);
                     if (resId > 0) {

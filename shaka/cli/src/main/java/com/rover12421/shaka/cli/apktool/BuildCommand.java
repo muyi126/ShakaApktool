@@ -37,7 +37,7 @@ import java.util.List;
 @Parameters(commandDescription = "build files into a apk file.")
 @ExtendedParameters(
         commandName = "build",
-        commandAliases = { "b" })
+        commandAliases = {"b"})
 public class BuildCommand extends ApktoolUsingFrameworkCommand {
 
     public BuildCommand(@Nonnull List<JCommander> commandAncestors) {
@@ -73,7 +73,14 @@ public class BuildCommand extends ApktoolUsingFrameworkCommand {
     @Override
     public void run() {
         super.run();
-
+        if (null != inputList) {
+            for (int i = 0; i < inputList.size(); i++) {
+                String data = inputList.get(i);
+                if (data != null) {
+                    System.out.println(i + "   " + data);
+                }
+            }
+        }
         String input = CommandUtil.getInput(this, inputList);
         apkOptions.forceBuildAll = forceAll;
         apkOptions.aaptPath = aaptPath;

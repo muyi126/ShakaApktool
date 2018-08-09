@@ -36,7 +36,7 @@ public class ShakaDecodeOption {
     private boolean fuckUnkownId = false;
     private boolean ignoreResDecodeError = false;
 
-    private boolean xmlAttributeNameCorrect = false;
+    private boolean xmlAttributeNameCorrect = true;
 
     public boolean isNo9png() {
         return no9png;

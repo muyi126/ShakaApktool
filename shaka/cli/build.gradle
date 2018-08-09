@@ -34,6 +34,25 @@ gradle.taskGraph.whenReady {
     }
 }
 
+//task run {
+//    if ( project.hasProperty("appArgs") ) {
+//        args Eval.me(appArgs)
+//
+//    }
+//}
+
+
+task run(type: JavaExec, dependsOn: 'classes') {
+    description '运行指定main函数的java'
+    classpath = sourceSets.main.runtimeClasspath
+    main = "com.rover12421.shaka.cli.Main"
+    if ( project.hasProperty("appArgs") ) {
+        args Eval.me(appArgs)
+    }
+
+}
+
+
 task proguard(type: JavaExec, dependsOn: fatJar) {
     def outFile = jar.destinationDir.getPath() + '/' + "ShakaApktool" + '_' + shakaVersion + '-release' + '.' + jar.extension
     inputs.file jar.archivePath

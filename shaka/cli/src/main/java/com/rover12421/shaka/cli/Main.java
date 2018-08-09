@@ -86,7 +86,14 @@ public class Main extends HelpAndLanguageCommand {
 
     public static void main(String[] args) {
         Main main = new Main();
-
+        if (null != args) {
+            for (int i = 0; i < args.length; i++) {
+                String data = args[i];
+                if (data != null) {
+                    System.out.println(i + "   " + data);
+                }
+            }
+        }
         Locale locale = Locale.getDefault();
         for (int i = 0; i < args.length-1; i++) {
             String arg = args[i];
