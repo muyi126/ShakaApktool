@@ -1,21 +1,22 @@
 /**
- *  Copyright 2015 Rover12421 <rover12421@163.com>
- *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *
- *       http://www.apache.org/licenses/LICENSE-2.0
- *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
+ * Copyright 2015 Rover12421 <rover12421@163.com>
+ * <p>
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.rover12421.shaka.apktool.lib;
 
 import brut.androlib.AndrolibException;
+import brut.androlib.res.data.ResResSpec;
 import brut.androlib.res.data.ResResource;
 import brut.androlib.res.data.value.ResFileValue;
 import brut.androlib.res.decoder.ResFileDecoder;
@@ -23,12 +24,16 @@ import brut.directory.Directory;
 import brut.directory.PathNotExist;
 import com.rover12421.shaka.lib.LogHelper;
 import com.rover12421.shaka.lib.reflect.Reflect;
+import com.rover12421.shaka.lib.util.PublicXmlParamer;
+import com.rover12421.shaka.lib.util.ResContoral;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 
+import java.io.File;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,6 +67,7 @@ public class ResFileDecoderAj {
      * 是否记录需要重新decode的资源
      */
     public static boolean DonotRecord = false;
+
     public static void ReDecodeFiles() throws AndrolibException {
         if (NeedReDecodeFiles) {
             DonotRecord = true;
@@ -82,6 +88,44 @@ public class ResFileDecoderAj {
          * menu/sidebar_popup_menu_fill 的ResFileValue是空的
          */
         ResFileValue fileValue = (ResFileValue) res.getValue();
+        String x = res.getResSpec().getId().toString();
+        Integer mId = Integer.parseInt(x.substring(2), 16);
+        if (ResContoral.publicXmlParamerHashMap.containsKey(mId)) {
+            File orgFile = new File(fileValue.getPath());
+            String orgFilePath = orgFile.getPath();
+            PublicXmlParamer publicXmlParamer = ResContoral.publicXmlParamerHashMap.get(mId);
+            publicXmlParamer.orgFilepath = orgFilePath;
+            int index = orgFilePath.indexOf(".");
+            String ext = "";
+            if (index != -1) {
+                ext = orgFilePath.substring(index);
+            }
+            publicXmlParamer.ext = ext;
+            index = orgFilePath.indexOf(publicXmlParamer.old_name);
+            String fileValueq = null;
+            if (index != -1) {
+                fileValueq = orgFilePath.substring(0, index);
+            }
+            try {
+                if(null!=publicXmlParamer.new_name){
+                    Field mNameField = ResResSpec.class.getDeclaredField("mName");
+                    mNameField.setAccessible(true);
+                    mNameField.set(res.getResSpec(), publicXmlParamer.new_name);
+                }
+
+//                if (fileValue != null) {
+//                    Field mPathFiled = ResFileValue.class.getDeclaredField("mPath");
+//                    mPathFiled.setAccessible(true);
+//                    mPathFiled.set(fileValue, fileValueq + publicXmlParamer.new_name + ext);
+//                }
+
+            } catch (NoSuchFieldException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+
 
         if (fileValue.getPath() == null) {
             String outResName = res.getFilePath();
@@ -102,7 +146,7 @@ public class ResFileDecoderAj {
         }
     }
 
-//    @Around("execution(* brut.androlib.res.decoder.ResFileDecoder.decode(..))" +
+    //    @Around("execution(* brut.androlib.res.decoder.ResFileDecoder.decode(..))" +
 //            "&& args(inDir, inFileName, outDir, outFileName, decoder)")
     //等待修复!!!
     public void decode(ProceedingJoinPoint joinPoint, Directory inDir, String inFileName, Directory outDir,

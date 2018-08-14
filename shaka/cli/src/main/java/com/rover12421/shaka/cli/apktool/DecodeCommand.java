@@ -29,6 +29,7 @@ import com.beust.jcommander.validators.PositiveInteger;
 import com.google.common.collect.Lists;
 import com.rover12421.shaka.cli.base.ApktoolUsingFrameworkCommand;
 import com.rover12421.shaka.cli.util.CommandUtil;
+import com.rover12421.shaka.lib.util.ResContoral;
 import org.jf.util.jcommander.Command;
 import org.jf.util.jcommander.ExtendedParameter;
 import org.jf.util.jcommander.ExtendedParameters;
@@ -191,7 +192,11 @@ public class DecodeCommand extends ApktoolUsingFrameworkCommand {
         } catch (Throwable e) {
             CommandUtil.exceptionExit(e);
         }
-
+        try {
+            ResContoral.init();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         try {
             decoder.decode();
         } catch (OutDirExistsException ex) {

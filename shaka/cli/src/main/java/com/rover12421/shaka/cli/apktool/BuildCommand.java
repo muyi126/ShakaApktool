@@ -84,6 +84,9 @@ public class BuildCommand extends ApktoolUsingFrameworkCommand {
         String input = CommandUtil.getInput(this, inputList);
         apkOptions.forceBuildAll = forceAll;
         apkOptions.aaptPath = aaptPath;
+        if(aaptPath==null){
+            apkOptions.aaptPath ="";
+        }
         apkOptions.copyOriginalFiles = copyOriginal;
         File outFile = null;
         if (output != null) {

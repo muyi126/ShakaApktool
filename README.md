@@ -6,7 +6,8 @@ You know and not know are in progress.
 
 It is NOT intended for piracy and other non-legal uses. It could be used for localizing, adding some features or support for custom platforms and other GOOD purposes. Just try to be fair with authors of an app, that you use and probably like.
 
-
+###Change
+已经对微信和qqmail做了资源混淆修改的处理，让反编译后的文件可以顺利回编译，需要修改QQMailR和WXRR里面的值，这个值是他们对于的R文件
 #### Link
 - [Project Page](http://www.rover12421.com/shakaapktool)
 - [Apktool Project Page](http://ibotpeaches.github.io/Apktool/)
