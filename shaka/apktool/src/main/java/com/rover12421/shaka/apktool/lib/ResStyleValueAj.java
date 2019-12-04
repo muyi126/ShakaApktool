@@ -48,10 +48,11 @@ public class ResStyleValueAj {
      at brut.androlib.ApkDecoder.decode(ApkDecoder.java:102)
      at brut.apktool.Main.cmdDecode(Main.java:170)
      at brut.apktool.Main.main(Main.java:86)
-
+     brut.androlib.res.data.value
      */
-    @Around("execution(void brut.androlib.res.data.value.ResStyleValue.serializeToResValuesXml(..))" +
-            "&& args(serializer, res)")
+    //TODO  修改
+//    @Around("execution(void brut.androlib.res.data.value.ResStyleValue.serializeToResValuesXml(..))" +
+//            "&& args(serializer, res)")
     public void serializeToResValuesXml(ProceedingJoinPoint joinPoint, XmlSerializer serializer,
                                         ResResource res) throws IOException, AndrolibException {
         try {

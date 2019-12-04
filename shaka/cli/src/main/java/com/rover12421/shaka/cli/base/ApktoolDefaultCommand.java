@@ -19,7 +19,6 @@ package com.rover12421.shaka.cli.base;
 import brut.androlib.ApkOptions;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
-import com.rover12421.shaka.cli.Main;
 
 import javax.annotation.Nonnull;
 import java.util.List;

@@ -24,13 +24,11 @@ import com.rover12421.shaka.lib.ShakaBuildOption;
 import com.rover12421.shaka.lib.ShakaDecodeOption;
 import com.rover12421.shaka.lib.ShakaProperties;
 import com.rover12421.shaka.lib.cli.CommandLineArgEnum;
-import com.rover12421.shaka.lib.multiLanguage.MultiLanguageSupport;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.Options;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
-import org.jf.util.ConsoleUtil;
 //import org.jf.util.SmaliHelpFormatter;
 
 /**

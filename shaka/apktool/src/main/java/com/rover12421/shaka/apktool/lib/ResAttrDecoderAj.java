@@ -46,8 +46,8 @@ public class ResAttrDecoderAj {
         return name;
     }
 
-    @Around("execution(* brut.androlib.res.decoder.ResAttrDecoder.decode(..))" +
-            "&& args(type, value, rawValue, attrResId)")
+//    @Around("execution(* brut.androlib.res.decoder.ResAttrDecoder.decode(..))" +
+//            "&& args(type, value, rawValue, attrResId)")
     public String decode_afterRetruning(ProceedingJoinPoint joinPoint, int type, int value, String rawValue, int attrResId) throws Exception {
         String ret = "";
         try {

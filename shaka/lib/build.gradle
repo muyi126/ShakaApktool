@@ -62,7 +62,8 @@ processResources {
     from('src/main/resources/properties') {
         include '**/*.properties'
         into 'properties'
-        filter(ReplaceTokens, tokens: [shakaVersion: shakaVersion.toString(), shakaDebug: shakaDebug.toString()] )
+//        filter(ReplaceTokens, tokens: [shakaVersion: shakaVersion.toString(), shakaDebug: shakaDebug.toString()] )
+        filter(ReplaceTokens, tokens: [shakaVersion: '1.1', shakaDebug: 'true'] )
     }
 }
 

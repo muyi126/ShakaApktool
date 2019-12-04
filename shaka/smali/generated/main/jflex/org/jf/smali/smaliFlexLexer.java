@@ -4,6 +4,7 @@ package org.jf.smali;
 
 import java.io.*;
 import org.antlr.runtime.*;
+import org.jf.smali.util.BlankReader;
 import org.jf.util.*;
 import static org.jf.smali.smaliParser.*;
 

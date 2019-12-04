@@ -408,17 +408,17 @@ public class AndrolibResourcesAj {
     }
 
     @AfterReturning(pointcut = "execution(* brut.androlib.res.AndrolibResources.getResFileDecoder(..))", returning = "duo")
-    public void getResFileDecoder_after(Duo<ResFileDecoder, AXmlResourceParser> duo) {
-        if (!ShakaDecodeOption.getInstance().isNo9png()) {
-            return;
-        }
-        ResFileDecoder fileDecoder = duo.m1;
-        try {
-            ResStreamDecoderContainer mDecoders = fileDecoder.getDecoders();
-            mDecoders.setDecoder("9patch", new ResRawStreamDecoder());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void getResFileDecoder_after(Duo<ResFileDecoder, AXmlResourceParser> duo) {//外部已经处理了.9
+//        if (!ShakaDecodeOption.getInstance().isNo9png()) {
+//            return;
+//        }
+//        ResFileDecoder fileDecoder = duo.m1;
+//        try {
+//            ResStreamDecoderContainer mDecoders = fileDecoder.getDecoders();
+//            mDecoders.setDecoder("9patch", new ResRawStreamDecoder());
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 
     @AfterReturning(pointcut = "execution(* brut.androlib.res.AndrolibResources.getFrameworkApk(..))" +

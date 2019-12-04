@@ -1366,7 +1366,7 @@ public class smaliTreeWalker extends TreeParser {
 					field_literal36=field_literal();
 					state._fsp--;
 
-					 encodedValue = new ImmutableFieldEncodedValue(field_literal36); 
+					 encodedValue = new ImmutableFieldEncodedValue((ImmutableFieldReference) field_literal36);
 					}
 					break;
 				case 15 :
@@ -1376,7 +1376,7 @@ public class smaliTreeWalker extends TreeParser {
 					method_literal37=method_literal();
 					state._fsp--;
 
-					 encodedValue = new ImmutableMethodEncodedValue(method_literal37); 
+					 encodedValue = new ImmutableMethodEncodedValue((ImmutableMethodReference) method_literal37);
 					}
 					break;
 				case 16 :
@@ -1386,7 +1386,7 @@ public class smaliTreeWalker extends TreeParser {
 					enum_literal38=enum_literal();
 					state._fsp--;
 
-					 encodedValue = new ImmutableEnumEncodedValue(enum_literal38); 
+					 encodedValue = new ImmutableEnumEncodedValue((ImmutableFieldReference) enum_literal38);
 					}
 					break;
 

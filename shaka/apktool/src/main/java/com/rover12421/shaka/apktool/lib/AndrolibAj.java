@@ -79,8 +79,8 @@ public class AndrolibAj {
     /**
      * 未知文件处理,在编译未知文件之前,重新扫描一次"unknown"目录
      */
-    @Before("execution(void brut.androlib.Androlib.buildUnknownFiles(..))" +
-            "&& args(appDir, outFile, meta)")
+//    @Before("execution(void brut.androlib.Androlib.buildUnknownFiles(..))" +
+//            "&& args(appDir, outFile, meta)")
     public void buildUnknownFiles_before(JoinPoint joinPoint, File appDir, File outFile, MetaInfo meta) {
         Androlib thiz = (Androlib) joinPoint.getThis();
         Map<String, String> files = meta.unknownFiles;
@@ -472,12 +472,13 @@ public class AndrolibAj {
     /**
      * 针对的是指定文件,而不使用扩展名
      * @param apkFile
-     * @param uncompressedFiles
+     * @param uncompressedFilesOrExts
      * @throws AndrolibException
+     *
      */
     @Around("execution(* brut.androlib.Androlib.recordUncompressedFiles(..))" +
-            "&& args(apkFile, uncompressedFiles)")
-    public void recordUncompressedFiles(ExtFile apkFile, Collection<String> uncompressedFiles) throws AndrolibException {
+            "&& args(apkFile, uncompressedFilesOrExts)")
+    public void recordUncompressedFiles(ExtFile apkFile, Collection<String> uncompressedFilesOrExts) throws AndrolibException {
         try {
             Directory unk = apkFile.getDirectory();
             Set<String> files = unk.getFiles(true);
@@ -487,7 +488,7 @@ public class AndrolibAj {
                         && AndroidZip.needCompress(file)   // Android 默然情况下是需要压缩的
                         ) {
                     //只有想冲突的时候才需要记录
-                    uncompressedFiles.add(file);
+                    uncompressedFilesOrExts.add(file);
                 }
             }
         } catch (DirectoryException ex) {

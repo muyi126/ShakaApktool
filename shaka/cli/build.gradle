@@ -54,7 +54,8 @@ task run(type: JavaExec, dependsOn: 'classes') {
 
 
 task proguard(type: JavaExec, dependsOn: fatJar) {
-    def outFile = jar.destinationDir.getPath() + '/' + "ShakaApktool" + '_' + shakaVersion + '-release' + '.' + jar.extension
+//    def outFile = jar.destinationDir.getPath() + '/' + "ShakaApktool" + '_' + shakaVersion + '-release' + '.' + jar.extension
+    def outFile = jar.destinationDir.getPath() + '/' + "ShakaApktool" + '_'  + '-release' + '.' + jar.extension
     inputs.file jar.archivePath
     outputs.file outFile
 

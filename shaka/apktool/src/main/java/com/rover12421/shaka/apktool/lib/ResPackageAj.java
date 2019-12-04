@@ -32,8 +32,8 @@ import org.aspectj.lang.annotation.Aspect;
 @Aspect
 public class ResPackageAj {
 
-    @Around("execution(* brut.androlib.res.data.ResPackage.getResSpec(..))" +
-            "&& args(resID)")
+//    @Around("execution(* brut.androlib.res.data.ResPackage.getResSpec(..))" +
+//            "&& args(resID)")
     public ResResSpec getResSpec(ProceedingJoinPoint joinPoint, ResID resID) throws Throwable {
         try {
             return (ResResSpec) joinPoint.proceed(joinPoint.getArgs());
@@ -47,7 +47,7 @@ public class ResPackageAj {
         }
     }
 
-    @Around("execution(* brut.androlib.res.data.ResPackage.addResSpec(..))")
+//    @Around("execution(* brut.androlib.res.data.ResPackage.addResSpec(..))")
     public void addResSpec(ProceedingJoinPoint joinPoint) {
         try {
             joinPoint.proceed(joinPoint.getArgs());

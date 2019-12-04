@@ -27,8 +27,8 @@ import org.aspectj.lang.annotation.Aspect;
 @Aspect
 public class ResResourceAj {
 
-    @Around("execution(* brut.androlib.res.data.ResResource.replace(..))" +
-            "&& args(value)")
+//    @Around("execution(* brut.androlib.res.data.ResResource.replace(..))" +
+//            "&& args(value)")
     public void replace(ProceedingJoinPoint joinPoint, ResValue value) throws Throwable {
         if (!ShakaDecodeOption.getInstance().isIgnoreResDecodeError()) {
             joinPoint.proceed(joinPoint.getArgs());

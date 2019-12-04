@@ -32,8 +32,8 @@ import org.aspectj.lang.annotation.Aspect;
 public class ResResSpecAj {
     public static boolean RenameResResSpec = false;
 
-    @Around("execution(void brut.androlib.res.data.ResResSpec.addResource(..))" +
-            "&& args(res, overwrite)")
+//    @Around("execution(void brut.androlib.res.data.ResResSpec.addResource(..))" +
+//            "&& args(res, overwrite)")
     public void addResource(ProceedingJoinPoint joinPoint, ResResource res, boolean overwrite) throws Throwable {
         try {
             joinPoint.proceed(joinPoint.getArgs());

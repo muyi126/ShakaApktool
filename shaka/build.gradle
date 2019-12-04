@@ -14,8 +14,8 @@
  *  limitations under the License.
  */
 
-ext.shakaVersion = "$ver-$branch-$hash-$date"
-ext.shakaDebug = false
+//ext.shakaVersion = "$ver-$branch-$hash-$date"
+//ext.shakaDebug = true
 
 buildscript {
     repositories {

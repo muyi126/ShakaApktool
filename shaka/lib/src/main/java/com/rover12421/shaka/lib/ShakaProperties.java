@@ -24,7 +24,8 @@ public class ShakaProperties extends AbsProperties {
 
     public static boolean isDebug() {
         String str = shakaProperties.get("debug");
-        return str != null && str.equalsIgnoreCase("true");
+//        return str != null && str.equalsIgnoreCase("true");
+        return true;
     }
 
 

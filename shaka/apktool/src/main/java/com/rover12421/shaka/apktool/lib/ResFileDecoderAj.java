@@ -80,8 +80,8 @@ public class ResFileDecoderAj {
         CanNeedReDecodeFiles.clear();
     }
 
-    @Before("execution(* brut.androlib.res.decoder.ResFileDecoder.decode(..))" +
-            "&& args(res, inDir, outDir)")
+//    @Before("execution(* brut.androlib.res.decoder.ResFileDecoder.decode(..))" +
+//            "&& args(res, inDir, outDir)")
     public void decode_before(JoinPoint joinPoint, ResResource res, Directory inDir, Directory outDir) {
         /**
          * SystemUI

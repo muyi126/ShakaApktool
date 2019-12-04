@@ -16,8 +16,8 @@ public class ResContoral {
     public static HashMap<String, List<PublicXmlParamer>> publicTypeXmlParamerHashMap;
     public static FileWriter writer;
     public static int index = 0;
-    static String fileName = "C:\\Users\\guzhu\\Desktop\\qqmail\\log.txt";
-    public static final String outFile = "C:\\Users\\guzhu\\Desktop\\qqmail\\Apk\\outDir";
+    static String fileName = "D:\\Desktop\\apktool\\log.txt";
+    public static final String outFile = "D:\\Desktop\\apktool\\FDex2_1.1\\Apk\\outDir";
 
     public static void init() throws Exception {
         if (mOrgMap == null) {
@@ -30,17 +30,21 @@ public class ResContoral {
             publicTypeXmlParamerHashMap = new HashMap<>();
         }
         if (writer == null) {
-
+            File file = new File(fileName);
+            if(!file.exists()){
+                file.createNewFile();
+            }
             writer = new FileWriter(fileName, true);
         }
         mOrgMap.clear();
-        Object bject = new WXRR();
-        Class<?>[] classs = bject.getClass().getClasses();
-        int classsLength = classs.length;
-        for (int i = 0; i < classsLength; i++) {
-            Class clz = classs[i];
-            injectValue(clz);
-        }
+//        Object bject = new WXRR();
+//        Object bject = new OUTLOOKRR();
+//        Class<?>[] classs = bject.getClass().getClasses();
+//        int classsLength = classs.length;
+//        for (int i = 0; i < classsLength; i++) {
+//            Class clz = classs[i];
+//            injectValue(clz);
+//        }
 //        File publicXml = new File("C:\\Users\\guzhu\\Desktop\\weixin\\out\\res\\values\\public.xml");
 //        InputStream in = new FileInputStream(publicXml);
 //        XmlPullParser parser = XmlPullParserFactory.newInstance().newPullParser();
