@@ -3,4 +3,4 @@
 url=https://github.com/muyi126/Apktool.git
 [submodule "shaka/smali/smali"]
 	path = shaka/smali/smali
-	url = https://github.com/JesusFreke/smali.git
+url=https://github.com/muyi126/smali.git
