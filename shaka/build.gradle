@@ -30,7 +30,7 @@ buildscript {
     }
     dependencies {
         classpath 'eu.appsatori:gradle-fatjar-plugin:0.3'
-        classpath 'nl.eveoh:gradle-aspectj:1.6'
+        classpath 'nl.eveoh:gradle-aspectj:2.0'
     }
 }
 
@@ -40,6 +40,7 @@ subprojects {
 
 // 过滤shaka:lib
 configure(subprojects - project(':shaka:lib')) {
+
     dependencies {
         compile project(':shaka:lib')
         // acj 的全局注入

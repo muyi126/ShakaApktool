@@ -17,7 +17,7 @@
 apply from  : 'gradle/functions.gradle'
 
 ext.langLevel = '1.8'
-ext.aspectjVersion = '1.8.10'
+ext.aspectjVersion = '1.8.12'
 ext.ver = '4.0.0'
 
 ext.branch = getCheckedOutBranchFromProject()
@@ -88,7 +88,7 @@ idea {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '3.5'
+    gradleVersion = '5.0'
 }
 
 // used for official releases only. Please don't use
